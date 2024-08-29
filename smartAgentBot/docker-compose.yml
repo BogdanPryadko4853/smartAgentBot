@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: 'postgres:14-alpine'
+    container_name: postgres
+    ports:
+      - "7070:5432"  # Порты должны быть согласованы с настройками PostgreSQL по умолчанию
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rootroot  # Пароль должен совпадать с вашим application.properties
+      POSTGRES_DB: fully  # Имя базы данных должно совпадать с вашим application.properties
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
